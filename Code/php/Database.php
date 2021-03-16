@@ -71,7 +71,13 @@
     /**
      * TODO: à compléter
      */
-    public function getOneTeacher($id){
+    public function getOneTeacher(){
+        $query = "SELECT * FROM t_teacher WHERE idTeacher =" . $_GET["idTeacher"];
+        $reqExecuted = $this->querySimpleExecute($query);
+        $results = $this->formatData($reqExecuted);
+
+        $this->unsetData($reqExecuted);
+        return $results;
         // TODO: récupère la liste des informations pour 1 enseignant
         // TODO: avoir la requête sql pour 1 enseignant (utilisation de l'id)
         // TODO: appeler la méthode pour executer la requête
@@ -79,6 +85,15 @@
         // TODO: retour l'enseignant
     }
 
+    public function getAllSections(){
+
+        $query = 'SELECT * FROM t_teaches JOIN t_teacher ON t_teaches.fkteacher = t_teacher.idTeacher JOIN t_section ON t_teaches.fksection = t_section.idSection';
+        $reqExecuted = $this->querySimpleExecute($query);
+        $results = $this->formatData($reqExecuted);
+
+        $this->unsetData($reqExecuted);
+        return $results;
+    }
 
     // + tous les autres méthodes dont vous aurez besoin pour la suite (insertTeacher ... etc)
  }

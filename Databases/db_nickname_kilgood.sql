@@ -34,6 +34,8 @@ CREATE TABLE t_teaches(
 	CONSTRAINT fk_section_teaches_id FOREIGN KEY (fksection) REFERENCES t_section(idSection) ON DELETE CASCADE,
 	PRIMARY KEY (fksection,fkteacher));
 
+	
+
 CREATE TABLE t_user(
 	idUser int AUTO_INCREMENT PRIMARY KEY,
 	useLogin varchar(50) NOT NULL,
@@ -52,9 +54,13 @@ INSERT INTO t_teacher (teaFirstname, teaName, teaGender, teaNickname, teaOrigin)
 ("Patrick", "Olivier", "M", "Pile", "Prof d'ELEOC"),
 ("Aurélie", "Curchod", "W", "Kevin", "Car elle ma appelée Kevin"),
 ("Laurent", "Duding", "M", "Covid", "Rattrapage covid"),
-("Johnatan", "Gander", "M", "Junior", "Prof jeune sympathique est dynamqique"),
+("Jonathan", "Gander", "M", "Junior", "Prof jeune sympathique est dynamqique"),
 ("Gilbert", "Gruaz", "M", "Gruazerie", "Car il fait toujours des gruazerie"),
 ("Dimitri", "Lymberis", "M", "8 litre", "Car il a une mercedes 8 litres"),
 ("Betrand", "Sahli", "M", "Médiateur", "Car c'est un médiateur"),
 ("Cyril", "Sokoloff", "M", "Badminton", "Car il joue au badminton"),
 ("Isabelle", "Stucki", "W", "Petit gâteau", "Car elle nous fait de petit gâteau");
+
+INSERT INTO t_teaches(fkteacher, fksection) VALUES
+(1, 1),
+(2, 1);
