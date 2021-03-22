@@ -13,8 +13,8 @@ $teachers = $db->getAllTeachers();
         <!--
 		ETML
 		Auteur      : Killian Good
-		Date        : 15.03.2021
-		Description : 
+		Date        : 22.03.2021
+		Description : index.php
 		-->
         <meta charset="UTF-8">
         <link href="../css/style.css" rel="stylesheet" type="text/css" />
@@ -33,14 +33,17 @@ $teachers = $db->getAllTeachers();
                 </tr>
                     <td><?php echo $teacher["teaName"] ?></td>
                     <td><?php echo $teacher["teaNickname"] ?></td>
-                    <td><a href="#">
-                    <a href="detail.php?idTeacher=<?= $teacher["idTeacher"]; ?>">+</a>
+                    <td>
+                        <a href="detail.php?idTeacher=<?= $teacher["idTeacher"];?>"> <img src="../../icons/edit.svg" width="20" height="20"></a>
+                        <a href="detail.php?idTeacher=<?= $teacher["idTeacher"];?>"> <img src="../../icons/trash.svg" width="20" height="20"></a>
+                        <a href="detail.php?idTeacher=<?= $teacher["idTeacher"];?>"> <img src="../../icons/search.svg" width="20" height="20"></a>
+                    </td>   
                 </tr>   
         <?php endforeach; ?>    
         </table>    
-    </body>
+    </body> 
     <footer>
         <hr style="width:1900px;text-align:left;margin-left:0">
-            <p>Copyright Killian Good - CIN2B</p>
+            <p>© Copyright Killian Good - CIN2B</p>
     </footer>
 </html>
