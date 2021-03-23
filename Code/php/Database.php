@@ -33,10 +33,12 @@
      * TODO: à compléter
      */
     private function queryPrepareExecute($query, $binds){
-        // $req = $this->$connector->prepare('SELECT * FROM t_teacher WHERE id = :varId AND input = :varInput');
-        // $req->bindValue('varId', $id, PDO::PARAM_INT);
-        // $req->bindValue('varInput', $input, PDO::PARAM_STR);
-        // $req->execute();
+        $req = $this->connector->prepare($query);
+        foreach($binds as $bind){
+            $req->bindValue($bind['field'], $bind['value'], $bind['type']);
+        }
+        $req->execute();
+        return $req;
     }
 
     /**
@@ -66,22 +68,24 @@
         return $results;
     }
 
-    /**
-     * TODO: à compléter
-     */
-    public function getOneTeacher(){
-        $query = "SELECT * FROM t_teacher WHERE idTeacher =" . $_GET["idTeacher"];
-        $reqExecuted = $this->querySimpleExecute($query);
+ 
+    
+    public function getOneTeacher($id){
+        $query = "SELECT * FROM t_teacher WHERE idTeacher = :id";
+        $binds = array(
+            0 => array(
+                'field' => ':id',
+                'value' => $id,
+                'type' => PDO::PARAM_INT
+            )    
+        );
+        $reqExecuted = $this->queryPrepareExecute($query, $binds);
         $results = $this->formatData($reqExecuted);
-
+        
         $this->unsetData($reqExecuted);
         return $results;
-        // TODO: récupère la liste des informations pour 1 enseignant
-        // TODO: avoir la requête sql pour 1 enseignant (utilisation de l'id)
-        // TODO: appeler la méthode pour executer la requête
-        // TODO: appeler la méthode pour avoir le résultat sous forme de tableau
-        // TODO: retour l'enseignant
     }
+
 
     public function getAllSections(){
 
@@ -102,14 +106,14 @@
         return $results;
     }
 
-    public function addTeacherSection($idTeacher, $idSection){
+    // public function addTeacherSection($idTeacher, $idSection){
 
-        $query = "INSERT INTO t_teaches (fkteacher, fksection) VALUES (:idxTeacher, :idxSection)";
-        $results = $this->connector->prepare($query);
-        $results->execute(['idxTeacher' => $idTeacher, 'idxSection' => $idSection]);
+    //     $query = "INSERT INTO t_teaches (fkteacher, fksection) VALUES (:idxTeacher, :idxSection)";
+    //     $results = $this->connector->prepare($query);
+    //     $results->execute(['idxTeacher' => $idTeacher, 'idxSection' => $idSection]);
 
-        return $results;
-    }
+    //     return $results;
+    // }
 
     // + tous les autres méthodes dont vous aurez besoin pour la suite (insertTeacher ... etc)
  }

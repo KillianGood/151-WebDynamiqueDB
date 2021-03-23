@@ -1,7 +1,9 @@
 <?php
 require "database.php";
 $db = new Database();
-$oneTeachers = $db->getOneTeacher();
+$id = $_GET["idTeacher"];
+
+$oneTeachers = $db->getOneTeacher($id);
 $sections = $db->getAllSections();
 ?>
 <!DOCTYPE html>
@@ -38,6 +40,6 @@ $sections = $db->getAllSections();
     </body>
     <footer>
         <hr style="width:1900px;text-align:left;margin-left:0">
-            <p>© Copyright Killian Good - CIN2B</p>
+        <p>© Copyright | Killian Good - CIN2B</p>
     </footer>
 </html>

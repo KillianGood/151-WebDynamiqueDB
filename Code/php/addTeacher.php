@@ -1,7 +1,6 @@
 <?php
 require "database.php";
 $db = new Database();
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -23,9 +22,9 @@ $db = new Database();
 		<form method="post" action="addTeacher.php">
            <p>
 		      <label>Genre :</label>
-		      <input type="radio" name="genre" value="m">Homme
-		      <input type="radio" name="genre" value="w">Femme
-              <input type="radio" name="genre" value="o">Autre
+		      <input type="radio" name="genre" value="M">Homme
+		      <input type="radio" name="genre" value="W">Femme
+              <input type="radio" name="genre" value="O">Autre
 		   </p>
 		   <p>
 		      <label for="firstname">Prénom :</label>
@@ -75,12 +74,13 @@ $db = new Database();
                         }
 
                         $db->addTeacher($_POST['name'], $_POST['firstname'], $_POST['genre'], $_POST['nickname'], $_POST['origin']);
-                        $db->addTeacherSection($teacher['idTeacher'] + 1, $section['idSection']);
+                        // $db->addTeacherSection($teacher['idTeacher'] + 1, $section['idSection']);
                     }
                 }
             ?>
     <footer>
-        <p>© Copyright | Julien Cartier - CIN2B</p>
+        <hr style="width:1900px;text-align:left;margin-left:0">
+        <p>© Copyright | Killian Good - CIN2B</p>
     </footer>
     </body>
 </html>
