@@ -23,7 +23,7 @@ $teachers = $db->getAllTeachers();
     <body>
         <h1>Surnom des enseignants</h1>
         <a href="#" class="button">Zone pour le menu</a>
-        <h3>Liste des enseignants</h3>
+        <h3>Liste des enseignants</h3> <a href="addTeacher.php" class="btn">Ajouter</a>
         <table class="tableau" width = "60%">
             <tr>
                 <th>Nom</th>

@@ -85,3 +85,25 @@ ul {
     text-align: right;
  }
 
+  /* FORMULAIRE MODIFICATION */
+ form.form-example {
+  display: table;
+}
+
+div.form-example {
+  display: table-row;
+}
+
+label, input {
+  display: table-cell;
+  margin-bottom: 10px;
+}
+
+label {
+  padding-right: 5px;
+}
+
+.RadioButton {
+  display: block;
+  text-align: left;
+}

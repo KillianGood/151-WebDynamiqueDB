@@ -27,7 +27,7 @@
 
         $req = $this->connector->query($query);
         return $req;
-    }
+    }   
 
     /**
      * TODO: à compléter
@@ -90,6 +90,24 @@
         $results = $this->formatData($reqExecuted);
 
         $this->unsetData($reqExecuted);
+        return $results;
+    }
+
+    public function addTeacher($surname, $firstname, $gender, $nickname, $nicknameOrigin){
+
+        $query = "INSERT INTO t_teacher (teaName, teaFirstname, teaGender, teaNickname, teaOrigin) VALUES (:surname, :firstname, :gender, :nickname, :nicknameOrigin)";
+        $results = $this->connector->prepare($query);
+        $results->execute(['surname' => $surname, 'firstname' => $firstname, 'gender' => $gender, 'nickname' => $nickname, 'nicknameOrigin' => $nicknameOrigin]);
+
+        return $results;
+    }
+
+    public function addTeacherSection($idTeacher, $idSection){
+
+        $query = "INSERT INTO t_teaches (fkteacher, fksection) VALUES (:idxTeacher, :idxSection)";
+        $results = $this->connector->prepare($query);
+        $results->execute(['idxTeacher' => $idTeacher, 'idxSection' => $idSection]);
+
         return $results;
     }
 
