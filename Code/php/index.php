@@ -1,11 +1,7 @@
 <?php 
 require "database.php";
 $db = new Database();
-$teachers = $db->getAllTeachers($id);
-
-// echo "<pre>";
-// print_r($teachers);
-// echo "</pre>";
+$teachers = $db->getAllTeachers();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -23,7 +19,7 @@ $teachers = $db->getAllTeachers($id);
     <body>
         <h1>Surnom des enseignants</h1>
         <a href="#" class="button">Zone pour le menu</a>
-        <h3>Liste des enseignants</h3> <a href="addTeacher.php" class="btn">Ajouter</a>
+        <a href="addTeacher.php"> <img alt="Ajouter" src="../../icons/icons8-ajouter-un-utilisateur-homme-52.png" width="50" height="50"></a>
         <table class="tableau" width = "60%">
             <tr>
                 <th>Nom</th>
@@ -32,26 +28,15 @@ $teachers = $db->getAllTeachers($id);
                 <th>Options</th>
             <?php foreach($teachers as $teacher): ?>
                 </tr>
-                    <td><?php echo $teacher["teaName"] ?></td>
-                    <td><?php echo $teacher["teaFirstname"] ?></td>
-                    <td><?php echo $teacher["teaNickname"] ?></td>
+                    <td><?= $teacher["teaName"] ?></td>
+                    <td><?= $teacher["teaFirstname"] ?></td>
+                    <td><?= $teacher["teaNickname"] ?></td>
                     <td>
-                        <a href="detail.php?idTeacher=<?= $teacher["idTeacher"];?>"> <img src="../../icons/edit.svg" width="20" height="20"></a>
-                        <button onclick="myFunction()"><img src="../../icons/trash.svg"></img></a></button>
+                        <a href="updateTeacher.php?idTeacher=<?= $teacher["idTeacher"];?>"> <img src="../../icons/edit.svg" width="20" height="20"></a>
+                        <a href="delete.php?idTeacher=<?= $teacher["idTeacher"]; ?>" onclick="return confirm('Êtes vous sûr de voiloir supprimer l\'enseignant ?')"><img src="../../icons/trash.svg"></img></a>
                         <a href="detail.php?idTeacher=<?= $teacher["idTeacher"];?>"> <img src="../../icons/search.svg" width="20" height="20"></a>
                     </td>   
                 </tr>  
-                <script>
-                        function myFunction()
-                        {
-                            var msg = confirm("Êtes-vous sûr de vouloir supprimer l'enseignant ?");
-                            if (msg == true) {
-                                alert("Enseignant supprimé");
-                            } else {
-                                alert("Action annulée");
-                            }
-                        }
-                </script> 
         <?php endforeach; ?>    
         </table>    
     </body> 
@@ -60,3 +45,4 @@ $teachers = $db->getAllTeachers($id);
         <p>© Copyright | Killian Good - CIN2B</p>
     </footer>
 </html>
+

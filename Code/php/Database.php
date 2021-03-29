@@ -56,9 +56,7 @@
         $req->closeCursor(); //Vider le jeu d’enregistrements
     }
 
-    /**
-     * TODO: à compléter
-     */
+    // Function to show all the teachers
     public function getAllTeachers(){
         $query = "SELECT * FROM t_teacher";
         $reqExecuted = $this->querySimpleExecute($query);
@@ -69,7 +67,7 @@
     }
 
  
-    
+    // Function to get one teacher 
     public function getOneTeacher($id){
         $query = "SELECT * FROM t_teacher WHERE idTeacher = :id";
         $binds = array(
@@ -86,7 +84,7 @@
         return $results;
     }
 
-
+    // Function to get all the different sections
     public function getAllSections(){
 
         $query = 'SELECT * FROM t_teaches JOIN t_teacher ON t_teaches.fkteacher = t_teacher.idTeacher JOIN t_section ON t_teaches.fksection = t_section.idSection';
@@ -97,6 +95,7 @@
         return $results;
     }
 
+    // Function to add a new teacher
     public function addTeacher($surname, $firstname, $gender, $nickname, $nicknameOrigin){
 
         $query = "INSERT INTO t_teacher (teaName, teaFirstname, teaGender, teaNickname, teaOrigin) VALUES (:surname, :firstname, :gender, :nickname, :nicknameOrigin)";
@@ -106,15 +105,23 @@
         return $results;
     }
 
-    // public function addTeacherSection($idTeacher, $idSection){
-
-    //     $query = "INSERT INTO t_teaches (fkteacher, fksection) VALUES (:idxTeacher, :idxSection)";
-    //     $results = $this->connector->prepare($query);
-    //     $results->execute(['idxTeacher' => $idTeacher, 'idxSection' => $idSection]);
-
-    //     return $results;
-    // }
-
-    // + tous les autres méthodes dont vous aurez besoin pour la suite (insertTeacher ... etc)
+    // Function to delete only one teacher
+    public function DeleteOneTeacher($id){
+        $query = "DELETE FROM t_teacher WHERE idTeacher = :id";
+        $binds = array(
+            0 => array(
+                'field' => ':id',
+                'value' => $id,
+                'type' => PDO::PARAM_INT
+            )    
+        );
+        $reqExecuted = $this->queryPrepareExecute($query, $binds);
+        $results = $this->formatData($reqExecuted);
+        
+        $this->unsetData($reqExecuted);
+        return $results;
+    }
+    
+        
  }
 ?>

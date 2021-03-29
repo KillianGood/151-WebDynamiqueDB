@@ -22,7 +22,7 @@ $sections = $db->getAllSections();
     <body>
         <h1>Surnom des enseignants</h1>
         <a href="index.php" class="button">Zone pour le menu</a>
-        <?php foreach($oneTeachers as $oneTeacher): ?><?php
+        <?php foreach($oneTeachers as $oneTeacher): ?><?php 
             if($oneTeacher["teaGender"] == "M") {
                 $Gender = '<img src="../../icons/maleGender.png" width"22px" height="22px" alt="icons">';
             }
@@ -31,11 +31,9 @@ $sections = $db->getAllSections();
                 $Gender = '<img src="../../icons/femaleGender.png" width"22px" height="22px" alt="icons">';
             }
             ?>
-        <?php foreach($sections as $section) {} ?>
             <h3><br> Détails : <?= $oneTeacher["teaFirstname"] . " " . $oneTeacher["teaName"]  . " " . $Gender?> <a href="updateTeacher.php"> <img src="../../icons/edit.svg" width="20" height="20"></a> <img src="../../icons/trash.svg" width="20" height="20"></a></h3>
             <p>Surnom :  <?= $oneTeacher["teaNickname"] ?></p>
             <p>Description :  <?= $oneTeacher["teaOrigin"]  ?></p>
-            <p>Section : <?= $section["secName"] ?></p>
         <?php endforeach; ?>
     </body>
     <footer>

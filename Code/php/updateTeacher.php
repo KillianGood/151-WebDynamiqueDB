@@ -1,6 +1,8 @@
-<?php
+<?php 
 require "database.php";
 $db = new Database();
+$id = $_GET["idTeacher"];
+$oneTeachers = $db->getOneTeacher($id);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,6 +21,7 @@ $db = new Database();
     <h1>Surnom des enseignants</h1>
     <a href="index.php" class="button">Zone pour le menu</a>
     <h2>Ajout d'un enseignant</h2>
+    <?php foreach($oneTeachers as $oneTeacher): ?>
 		<form method="post" action="addTeacher.php">
            <p>
 		      <label>Genre :</label>
@@ -28,19 +31,21 @@ $db = new Database();
 		   </p>
 		   <p>
 		      <label for="firstname">Prénom :</label>
-		      <input type="text" name="firstname" id="firstname" />
+		      <input type="text" name="firstname" id="firstname" value="<?= $oneTeacher["teaFirstname"] ?>"/>
 		   </p>
            <p>
 		      <label for="name">Nom:</label>
-		      <input type="text" name="name" id="name" />
+		      <input type="text" name="name" id="name" value="<?= $oneTeacher["teaName"] ?>"/>
 		   </p>
            <p>
 		      <label for="nickname">Surnom:</label>
-		      <input type="text" name="nickname" id="nickname" />
+		      <input type="text" name="nickname" id="nickname" value="<?= $oneTeacher["teaNickname"] ?>"/>
 		   </p>
 		   <p>
 		      <label for="origin">Origine du surnom :</label><br>
-		      <textarea name="origin" id="origin"></textarea>
+		      <textarea name="origin" id="origin" rows="3" cols="50">
+                <?= $oneTeacher["teaOrigin"] ?>
+              </textarea>
 		   </p>
 		   <p>
 		      <label for="section">Section :</label>
@@ -56,32 +61,4 @@ $db = new Database();
 		      <input type="reset" name="btnDelete" value="Effacer" />
             </div>
 		</form>
-        <?php 
-                if(isset($_POST['btnSubmit'])) {
-                    if(!(isset($_POST['genre'])) || empty($_POST['name']) ||  empty($_POST['firstname']) ||  empty($_POST['nickname']) || empty($_POST['origin'])) { // || $_POST['section'] == 'section') {
-                        echo '<h1 style="color:red; margin:0; padding-top:40px; ">Veuillez renseignez tout les champs</h1>';
-                    }
-                    else {
-                        $teachers = $db->getAllTeachers();
-                        $sections = $db->getAllSections();
-
-                        foreach($teachers as $teacher) 
-                        {
-                            // EMPTY
-                        }
-                        foreach($sections as $section) 
-                        {
-                            // EMPTY
-                        }
-
-                        $db->addTeacher($_POST['name'], $_POST['firstname'], $_POST['genre'], $_POST['nickname'], $_POST['origin']);
-                        // $db->addTeacherSection($teacher['idTeacher'] + 1, $section['idSection']);
-                    }
-                }
-            ?>
-    <footer>
-        <hr style="width:1900px;text-align:left;margin-left:0">
-        <p>© Copyright | Killian Good - CIN2B</p>
-    </footer>
-    </body>
-</html>
+        <?php endforeach; ?>
