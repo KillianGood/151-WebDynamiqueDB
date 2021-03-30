@@ -36,7 +36,7 @@ $sections = $db->getOneTeacherSection($id);
         <p>Section : <?= $section["secName"] ?></p> 
         <?php endforeach; ?>   
         <div class="iconsDetail">
-            <a href="editTeacher.php?idTeacher=<?= $teacher["idTeacher"]; ?>"><img src="../../icons/edit.svg"></img></a>
+            <a href="updateTeacher.php?idTeacher=<?= $teacher["idTeacher"]; ?>"><img src="../../icons/edit.svg"></img></a>
             <a href="deleteTeacher.php?idTeacher=<?= $teacher["idTeacher"]; ?>" onclick="return confirm('Êtes vous sûr de voiloir supprimer l\'enseignant ?')"><img src="../../icons/trash.svg"></img></a>
         </div>
         <h4>Surnom : <?= $teacher["teaNickname"] ?></h4>

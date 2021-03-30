@@ -20,28 +20,28 @@ $sections = $db->getAllSections();
     <h1>Surnom des enseignants</h1>
     <a href="index.php" class="button">Zone pour le menu</a>
     <h2>Ajout d'un enseignant</h2>
-		<form method="post" action="addTeacher.php">
+		<form method="post" action="addTeacher.php">    
            <p>
 		      <label>Genre :</label>
-		      <input type="radio" name="genre" value="M">Homme
-		      <input type="radio" name="genre" value="W">Femme
-              <input type="radio" name="genre" value="O">Autre
+		      <input type="radio" name="teaGender" value="M">Homme
+		      <input type="radio" name="teaGender" value="W">Femme
+              <input type="radio" name="teaGender" value="O">Autre
 		   </p>
 		   <p>
-		      <label for="firstname">Prénom :</label>
-		      <input type="text" name="firstname" id="firstname" />
+		      <label for="teaFirstname">Prénom :</label>
+		      <input type="text" name="teaFirstname" id="teaFirstname" />
 		   </p>
            <p>
-		      <label for="name">Nom:</label>
-		      <input type="text" name="name" id="name" />
+		      <label for="teaName">Nom:</label>
+		      <input type="text" name="teaName" id="teaName" />
 		   </p>
            <p>
-		      <label for="nickname">Surnom:</label>
-		      <input type="text" name="nickname" id="nickname" />
+		      <label for="teaNickname">Surnom:</label>
+		      <input type="text" name="teaNickname" id="teaNickname" />
 		   </p>
 		   <p>
-		      <label for="origin">Origine du surnom :</label><br>
-		      <textarea name="origin" id="origin"></textarea>
+		      <label for="teaOrigin">Origine du surnom :</label><br>
+		      <textarea name="teaOrigin" id="teaOrigin"></textarea>
 		   </p>
 		   <p> 
            <div class="selectSection input">
@@ -63,15 +63,16 @@ $sections = $db->getAllSections();
         <?php 
         if(isset($_POST["btnSubmit"]))
         {
-            if(empty($_POST["gender"]) || empty($_POST["name"]) || empty($_POST["surname"]) || empty($_POST["nickname"]) || empty($_POST["origin"]) || $_POST["section"] == 0 )
+            if(empty($_POST["teaGender"]) || empty($_POST["teaFirstname"]) || empty($_POST["teaName"]) || empty($_POST["teaNickname"]) || empty($_POST["teaOrigin"]) || $_POST["section"] == 0 )
         {
-        echo "<h1 style='background-color:red; border-radius: 20px; text-align:center; height: 50px; width: 600px;'>Veuillez renseigner tous les champs !</h1>";
+        echo "<h1>Veuillez remplir tous les champs</h1>";
         } 
-        else {
-        $teachers = $db->getAllTeachers();
-        $db->addTeacher( $_POST['name'], $_POST['surname'],$_POST['gender'], $_POST['nickname'], $_POST['origin']);
-        $db->addTeacherSection($section['idSection']);
-        echo "<h1 style='background-color:green; border-radius: 20px; text-align:center; height: 50px; width: 600px; color: white;'>L'enseigant a bien été ajouté !</h1>";
+        else 
+        {
+            $teachers = $db->getAllTeachers();
+            $db->addTeacher( $_POST['teaFirstname'], $_POST['teaName'],$_POST['teaGender'], $_POST['teaNickname'], $_POST['teaOrigin']);
+            $db->addTeacherSection($section['idSection']);
+            echo "<h3>Enseignant ajouté(e)</h3>";
         }
     }
         ?>

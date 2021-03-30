@@ -94,12 +94,36 @@
     }
 
     // Function to add a new teacher
-    public function addTeacher($surname, $firstname, $gender, $nickname, $nicknameOrigin){
-
-        $query = "INSERT INTO t_teacher (teaName, teaFirstname, teaGender, teaNickname, teaOrigin) VALUES (:surname, :firstname, :gender, :nickname, :nicknameOrigin)";
-        $results = $this->connector->prepare($query);
-        $results->execute(['surname' => $surname, 'firstname' => $firstname, 'gender' => $gender, 'nickname' => $nickname, 'nicknameOrigin' => $nicknameOrigin]);
-
+    public function addTeacher($surname, $firstname, $gender , $nickname, $origin){
+        $query = "INSERT INTO t_teacher (teaFirstname, teaName, teaNickname, teaGender, teaOrigin) VALUES (:teaFirstname, :teaName, :teaNickname, :teaGender, :teaOrigin)";
+        $binds = array(
+            0 => array(
+                'field' => ':teaFirstname',
+                'value' => $surname,
+                'type' => PDO::PARAM_STR
+            ),
+            1 => array(
+                'field' => ':teaName',
+                'value' => $firstname,
+                'type' => PDO::PARAM_STR
+            ),
+            2 => array(
+                'field' => ':teaGender',
+                'value' => $gender,
+                'type' => PDO::PARAM_STR
+            ),
+            3 => array(
+                'field' => ':teaNickname',
+                'value' => $nickname,
+                'type' => PDO::PARAM_STR
+            ),
+            4 => array(
+                'field' => ':teaOrigin',
+                'value' => $origin,
+                'type' => PDO::PARAM_STR
+            )
+        );
+        $results = $this->queryPrepareExecute($query, $binds);
         return $results;
     }
 

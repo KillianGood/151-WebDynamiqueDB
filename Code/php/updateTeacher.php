@@ -20,7 +20,7 @@ $oneTeachers = $db->getOneTeacher($id);
     <body>
     <h1>Surnom des enseignants</h1>
     <a href="index.php" class="button">Zone pour le menu</a>
-    <h2>Ajout d'un enseignant</h2>
+    <h2>Modification d'un enseignant</h2>
     <?php foreach($oneTeachers as $oneTeacher): ?>
 		<form method="post" action="addTeacher.php">
 	<?php
