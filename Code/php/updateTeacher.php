@@ -23,12 +23,25 @@ $oneTeachers = $db->getOneTeacher($id);
     <h2>Ajout d'un enseignant</h2>
     <?php foreach($oneTeachers as $oneTeacher): ?>
 		<form method="post" action="addTeacher.php">
-           <p>
-		      <label>Genre :</label>
-		      <input type="radio" name="genre" value="M">Homme
-		      <input type="radio" name="genre" value="W">Femme
-              <input type="radio" name="genre" value="O">Autre
-		   </p>
+	<?php
+            if ($oneTeacher["teaGender"] == "M")
+            {
+                echo '<input type="radio" name="gender" id="man" value="M" checked>Homme';
+                echo '<input type="radio" name="gender" id="woman" value="W">Femme';
+                echo  '<input type="radio" name="gender" id="other" value="O">Autre';
+            }
+            else if ($oneTeacher["teaGender"] == "W")
+            {
+                echo '<input type="radio" name="gender" id="man" value="M">Homme';
+                echo '<input type="radio" name="gender" id="woman" value="W"checked>Femme';
+                echo  '<input type="radio" name="gender" id="other" value="O">Autre';
+            }
+            else if ($oneTeacher["teaGender"] == "O")
+            {
+                echo '<input type="radio" name="gender" id="man" value="M">Homme';
+                echo '<input type="radio" name="gender" id="woman" value="W">Femme';
+                echo  '<input type="radio" name="gender" id="other" value="O" checked>Autre';
+    }?>
 		   <p>
 		      <label for="firstname">Prénom :</label>
 		      <input type="text" name="firstname" id="firstname" value="<?= $oneTeacher["teaFirstname"] ?>"/>
@@ -43,9 +56,7 @@ $oneTeachers = $db->getOneTeacher($id);
 		   </p>
 		   <p>
 		      <label for="origin">Origine du surnom :</label><br>
-		      <textarea name="origin" id="origin" rows="3" cols="50">
-                <?= $oneTeacher["teaOrigin"] ?>
-              </textarea>
+		      <textarea name="origin" id="origin" rows="3" cols="50"><?= $oneTeacher["teaOrigin"] ?></textarea>
 		   </p>
 		   <p>
 		      <label for="section">Section :</label>
@@ -55,10 +66,7 @@ $oneTeachers = $db->getOneTeacher($id);
 		      </select>
 		   </p>
            <div class="btnSubmit">
-		      <input type="submit" name="btnSubmit" value="Ajouter l'enseignant(e)" />
-            </div>
-            <div class="btnDelete">
-		      <input type="reset" name="btnDelete" value="Effacer" />
+		      <input type="submit" name="btnSubmit" value="Modifier l'enseignant(e)" />
             </div>
 		</form>
-        <?php endforeach; ?>
+    <?php endforeach; ?>	

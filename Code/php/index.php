@@ -14,13 +14,23 @@ $teachers = $db->getAllTeachers();
 		-->
         <meta charset="UTF-8">
         <link href="../css/style.css" rel="stylesheet" type="text/css" />
-        <title>Surnom</title>
+        <title>Surnom</title>  </div>
     </head>
+
     <body>
-        <h1>Surnom des enseignants</h1>
-        <a href="#" class="button">Zone pour le menu</a>
-        <a href="addTeacher.php"> <img alt="Ajouter" src="../../icons/icons8-ajouter-un-utilisateur-homme-52.png" width="50" height="50"></a>
-        <table class="tableau" width = "60%">
+        <div class="topnav">
+                <div class="login-container">
+                    <label>Surnom des enseignants</label>
+                    <input type="text" placeholder="Login" name="login">    
+                    <input type="text" placeholder="Mot de passe" name="psw">
+                    <button type="submit" formaction="/action_page2.php">Se Connecter</button>
+                </div>
+        </div>
+            <a href="#" class="button">Zone pour le menu</a>
+            <div class="test">
+                <a href="addTeacher.php"> <img alt="Ajouter" src="../../icons/icons8-ajouter-un-utilisateur-homme-52.png" width="50" height="50"></a>
+            </div>
+            <table class="tableau" width = "60%">
             <tr>
                 <th>Nom</th>
                 <th>Prénom</th>

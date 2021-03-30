@@ -1,3 +1,81 @@
+  .iconsDetail {
+    text-align: right;
+  }
+  
+  .test{
+    text-align: right;
+    padding-top: 20px;
+    padding-right: 50px;
+  }
+  
+  label{
+    font-size: 18px;
+    /* width: 100px; */
+  }
+
+  .topnav {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+    
+  .topnav a {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+    
+  .topnav a:hover {
+    background-color: #1b81d4;
+    color: black;
+  }
+    
+  /* Active/current link */
+  .topnav a.active {
+    color: white;
+  }
+    
+  /* Style the input container */
+  .topnav .login-container {
+    float: left;
+  }
+    
+  .topnav input {
+    padding: 11px;
+    margin-top: 8px;
+    font-size: 13px;
+    border: none;
+    width: 150px; 
+    border-radius: 10px;
+    border: 2px solid rgb(158, 158, 158);
+  
+  }
+    
+  .topnav .login-container button {
+    padding: 11px;
+    margin-top: 8px;
+    font-size: 13px;
+    border: none;
+    width: 150px; 
+    border-radius: 10px;
+    background-color: rgb(0, 153, 255);
+    color: white;
+    border: 1px solid rgb(158, 158, 158);
+  }
+    
+  .topnav .login-container button:hover {
+    background: #1c7ac7;
+  }
+    
+  
+  .topnav .login-container label{
+    font-size: 25px;
+  }
+
   html{
     font-family: Arial, Helvetica, sans-serif;
     
@@ -12,9 +90,6 @@ table, th, td {
     border-collapse: collapse;
     text-align: left;
     padding: 12px;
-    /* padding-left: 10px; */
-
-    /* padding: 8px; */
 }
 .tableDesign{
     max-width: 80%;
@@ -107,3 +182,4 @@ label {
   display: block;
   text-align: left;
 }
+

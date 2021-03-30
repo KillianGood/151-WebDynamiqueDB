@@ -1,6 +1,7 @@
 <?php
 require "database.php";
 $db = new Database();
+$sections = $db->getAllSections();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -42,12 +43,15 @@ $db = new Database();
 		      <label for="origin">Origine du surnom :</label><br>
 		      <textarea name="origin" id="origin"></textarea>
 		   </p>
-		   <p>
-		      <label for="section">Section :</label>
-		      <select name="section" id="section">
-		         <option value="info">Informatique</option>
-		         <option value="theory">Théorie</option>
-		      </select>
+		   <p> 
+           <div class="selectSection input">
+                <select name="section" id="section">
+                    <option value="0">Section </option>
+                    <?php foreach($sections as $section) : ?>
+                        <option value="<?= $section["idSection"]; ?>"><?= $section["secName"]; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
 		   </p>
            <div class="btnSubmit">
 		      <input type="submit" name="btnSubmit" value="Ajouter l'enseignant(e)" />
@@ -57,28 +61,20 @@ $db = new Database();
             </div>
 		</form>
         <?php 
-                if(isset($_POST['btnSubmit'])) {
-                    if(!(isset($_POST['genre'])) || empty($_POST['name']) ||  empty($_POST['firstname']) ||  empty($_POST['nickname']) || empty($_POST['origin'])) { // || $_POST['section'] == 'section') {
-                        echo '<h1 style="color:red; margin:0; padding-top:40px; ">Veuillez renseignez tout les champs</h1>';
-                    }
-                    else {
-                        $teachers = $db->getAllTeachers();
-                        $sections = $db->getAllSections();
-
-                        foreach($teachers as $teacher) 
-                        {
-                            // EMPTY
-                        }
-                        foreach($sections as $section) 
-                        {
-                            // EMPTY
-                        }
-
-                        $db->addTeacher($_POST['name'], $_POST['firstname'], $_POST['genre'], $_POST['nickname'], $_POST['origin']);
-                        // $db->addTeacherSection($teacher['idTeacher'] + 1, $section['idSection']);
-                    }
-                }
-            ?>
+        if(isset($_POST["btnSubmit"]))
+        {
+            if(empty($_POST["gender"]) || empty($_POST["name"]) || empty($_POST["surname"]) || empty($_POST["nickname"]) || empty($_POST["origin"]) || $_POST["section"] == 0 )
+        {
+        echo "<h1 style='background-color:red; border-radius: 20px; text-align:center; height: 50px; width: 600px;'>Veuillez renseigner tous les champs !</h1>";
+        } 
+        else {
+        $teachers = $db->getAllTeachers();
+        $db->addTeacher( $_POST['name'], $_POST['surname'],$_POST['gender'], $_POST['nickname'], $_POST['origin']);
+        $db->addTeacherSection($section['idSection']);
+        echo "<h1 style='background-color:green; border-radius: 20px; text-align:center; height: 50px; width: 600px; color: white;'>L'enseigant a bien été ajouté !</h1>";
+        }
+    }
+        ?>
     <footer>
         <hr style="width:1900px;text-align:left;margin-left:0">
         <p>© Copyright | Killian Good - CIN2B</p>

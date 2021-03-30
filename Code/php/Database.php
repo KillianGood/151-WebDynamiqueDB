@@ -86,11 +86,9 @@
 
     // Function to get all the different sections
     public function getAllSections(){
-
-        $query = 'SELECT * FROM t_teaches JOIN t_teacher ON t_teaches.fkteacher = t_teacher.idTeacher JOIN t_section ON t_teaches.fksection = t_section.idSection';
+        $query = "SELECT * FROM t_section";
         $reqExecuted = $this->querySimpleExecute($query);
         $results = $this->formatData($reqExecuted);
-
         $this->unsetData($reqExecuted);
         return $results;
     }
@@ -121,7 +119,37 @@
         $this->unsetData($reqExecuted);
         return $results;
     }
-    
+
+    public function getOneTeacherSection($id){
+        $query = "SELECT * FROM t_teaches JOIN t_teacher ON fkteacher = idTeacher JOIN t_section ON fksection = idSection WHERE idTeacher = :id";
+        $binds = array(
+            0 => array(
+                'field' => ':id',
+                'value' => $id,
+                'type' => PDO::PARAM_INT
+            )    
+        );
+        $reqExecuted = $this->queryPrepareExecute($query, $binds);
+        $results = $this->formatData($reqExecuted);
+        $this->unsetData($reqExecuted);
+        return $results;
+    }
+
+    public function addTeacherSection($section){
+        $query = "INSERT INTO t_teaches (fkteacher, fksection) VALUES (LAST_INSERT_ID(), :fksection)";
+        $binds = array(
+            0 => array(
+                'field' => ':fksection',
+                'value' => $section,
+                'type' => PDO::PARAM_INT
+            )
+        );
+        $results = $this->queryPrepareExecute($query, $binds);
+        return $results;
+    }
+
+
+
         
- }
+}
 ?>

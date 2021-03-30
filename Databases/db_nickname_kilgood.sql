@@ -1,7 +1,7 @@
 -- ETML
 -- Auteur: kilgood
 -- Date: 08.03.2021
--- Description: 
+-- Description: databse of my etml website "Fil rouge"
 
 DROP DATABASE IF EXISTS db_nickname_kilgood;
 
@@ -61,6 +61,16 @@ INSERT INTO t_teacher (teaFirstname, teaName, teaGender, teaNickname, teaOrigin)
 ("Cyril", "Sokoloff", "M", "Badminton", "Car il joue au badminton"),
 ("Isabelle", "Stucki", "W", "Petit gâteau", "Car elle nous fait de petit gâteau");
 
-INSERT INTO t_teaches(fkteacher, fksection) VALUES
-(1, 1),
-(2, 1);
+INSERT INTO t_teaches (fkteacher, fksection) VALUES 
+(1, 2),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(7, 1),
+(8, 1),
+(9, 1),
+(10, 1),
+(11, 1
+);
