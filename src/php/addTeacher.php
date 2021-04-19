@@ -3,7 +3,7 @@ require "header.php";
 $sections = $db->getAllSections(); 
 ?>
 <form method="POST" action="addTeacher.php">
-    <h2>Ajouter un enseignant</h2>
+    <h2>Ajout d'un enseignant</h2>
     <ul>
         <li>
             <input type="radio" name="gender" id="man" value="M">Homme 

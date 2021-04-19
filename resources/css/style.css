@@ -1,3 +1,6 @@
+html{
+  font-family: 'Courier New', Courier, monospace;
+}
 
 main{
   width: 80%;
@@ -18,6 +21,8 @@ h3{
   padding: 50px;
 }
 
+
+
 .navBar {
   position: relative;
   margin: auto;
@@ -34,25 +39,44 @@ h3, h4{
   font-size: 30px;
 }
 
-
-table, th, td {
-  border-bottom: 1px solid gray;
-  border-collapse: collapse;
-  text-align: left;
-  padding: 12px;
+.scroll
+{
+  border: 2px solid black;
+  width: 90%;
+  margin-left: 5%;
 }
-.tableDesign{
-  max-width: 80%;
-  margin-left: 20px;
+.scroll thead
+{
+  background-color: rgb(209, 209, 209);
+  font-size: 24px;
+  padding-top:10px;
+  height: 20px;
+  display:block;
+}
+
+.scroll tbody
+{
+  width: 100%;
+  display:block;
+  overflow-y: scroll;
+  max-height:32em;
+}
+ 
+.scroll th 
+{
+  width: 500px;
   text-align: center;
-  font-size: 22px;
 }
 
-.tableau {
-  margin-left: auto;
-  margin-right: auto;
-  border-spacing: 5em;
+.scroll td
+{
+  border-bottom: 1px solid rgb(158, 158, 158);
+  font-size: 24px;
+  height: 40px;
+  width: 500px;
+  text-align: center;
 }
+
 
 select {
   width: 150px;
@@ -106,7 +130,7 @@ footer{
 }
   
 .topnav a:hover {
-  background-color: black;
+  background-color: #1b81d4;
   color: black;
 }
   
@@ -138,14 +162,13 @@ footer{
   border: none;
   width: 150px; 
   border-radius: 10px;
-  background-color: black;
+  background-color: rgb(0, 153, 255);
   color: white;
   border: 1px solid rgb(158, 158, 158);
 }
   
 .topnav .login-container button:hover {
-  background: white;
-  color: black;
+  background: #1c7ac7;
 }
   
 
@@ -186,4 +209,3 @@ textarea {
   width: 95px;
   height: 28px;
 }
-

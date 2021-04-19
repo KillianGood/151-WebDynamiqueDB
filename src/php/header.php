@@ -8,7 +8,7 @@ $db = new Database();
     <head>
         <!--
 		ETML
-		Auteur      : Killian Good
+		Auteur      : Anthony Höhn
 		Date        : 22.03.2021
 		Description : 
 		-->

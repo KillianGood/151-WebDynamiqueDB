@@ -1,4 +1,7 @@
-
+-- ETML
+-- Auteur: kilgood
+-- Date: 08.03.2021
+-- Description: 
 
 DROP DATABASE IF EXISTS db_nickname_kilgood;
 
@@ -59,7 +62,6 @@ INSERT INTO t_teacher (teaFirstname, teaName, teaGender, teaNickname, teaOrigin)
 ("Betrand", "Sahli", "M", "Médiateur", "Car c'est un médiateur"),
 ("Cyril", "Sokoloff", "M", "Badminton", "Car il joue au badminton"),
 ("Isabelle", "Stucki", "W", "Petit gâteau", "Car elle nous fait de petit gâteau");
-);
 
 INSERT INTO t_teaches (fkteacher, fksection) VALUES 
 (1, 1),

@@ -9,7 +9,7 @@ $sections = $db->getAllSections();
 
 <?php foreach($teachers as $teacher): ?> 
 <form method="POST" action="editTeacher.php?idTeacher=<?= $teacher["idTeacher"]; ?>"> 
-    <h2>Modifier un enseignant</h2>
+    <h2>Modifications d'un enseignant</h2>
     <ul>
         <li>
         <?php
