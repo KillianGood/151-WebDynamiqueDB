@@ -37,11 +37,11 @@ CREATE TABLE t_teaches(
 CREATE TABLE t_user(
 	idUser int AUTO_INCREMENT PRIMARY KEY,
 	useLogin varchar(50) NOT NULL,
-	usePassword varchar(62) NOT NULL,
-	useIsAdmin smallint(1) NOT NULL);
+	usePassword varchar(255) NOT NULL,
+	useIsAdmin BOOLEAN NOT NULL);
 
 INSERT INTO t_user (useLogin, usePassword, useIsAdmin) VALUES 
-("admin", "admin", 1
+("admin", "$2y$10$ebINd1FQ518pmgmdagSBzeoSS3Ps5NEucIASl0DVnqJt4jD9oXV1a", 1
 );
 
 INSERT INTO t_section (secName) VALUES 
@@ -49,19 +49,22 @@ INSERT INTO t_section (secName) VALUES
 ("Théorie");
 
 INSERT INTO t_teacher (teaFirstname, teaName, teaGender, teaNickname, teaOrigin) VALUES 
-("Antoine","Mveng","M","Mercedes","Car login -> AMG"),
-("Karim", "Bourahla", "M", "ceFaire", "Car il aime nous faire"),
-("Michel","Delgado","M","NumberOne","Meilleur prof de réseau"),
-("Patrick", "Chenaux", "M", "Café", "Pause café"),
-("Patrick", "Olivier", "M", "Pile", "Prof d'ELEOC"),
-("Aurélie", "Curchod", "W", "Kevin", "Car elle ma appelée Kevin"),
-("Laurent", "Duding", "M", "Covid", "Rattrapage covid"),
-("Jonathan", "Gander", "M", "Junior", "Prof jeune sympathique est dynamqique"),
-("Gilbert", "Gruaz", "M", "Gruazerie", "Car il fait toujours des gruazerie"),
-("Dimitri", "Lymberis", "M", "8 litre", "Car il a une mercedes 8 litres"),
-("Betrand", "Sahli", "M", "Médiateur", "Car c'est un médiateur"),
-("Cyril", "Sokoloff", "M", "Badminton", "Car il joue au badminton"),
-("Isabelle", "Stucki", "W", "Petit gâteau", "Car elle nous fait de petit gâteau");
+("Karim", "Bourahla", "M", "Ca va?? Vous allez bien ??", "Il dit toujours ça lm a O"),
+("Michel","Delgado","M","THE G.O.A.T","Meilleur prof :O"),
+("Patrick", "Chenaux", "M", "?", "C'est qui ?"),
+("Patrick", "Olivier", "O", "Sportif", "sportif et gentil."),
+("Aurélie", "Curchod", "W", "Classe", "On la voit que en scéance de classe."),
+("Laurent", "Duding", "M", "Covid", "On l'a eu lors des rattrapage covid."),
+("Olivier", "Merenda", "M", "Merenda Consulting", "Entreprise factisse lors de son cours."),
+("Salulessa", "Salulessa", "M", "WE MOVE TO YOU", "Phrase qu'il dit quand nous lisons et qu'il change d'élève."),
+("Sarah", "Ridet", "W", "OKAYYYY", "Dit ça à chaque fin de pause."),
+("Jean-Christophe", "Jaggi", "M", "KILLIAANNNN", "Il dit KilliEn à la place de killian."),
+("Jonathan", "Gander", "M", "the best", "Prof jeune sympathique est dynamqique, très gentil !!"),
+("Gilbert", "Gruaz", "M", "Gruazerie", "Car il nous fait toujours des gruazeries."),
+("Betrand", "Sahli", "M", "Médiateur", "Car c'est un médiateur."),
+("Cyril", "Sokoloff", "M", "Story zzz", "Aime beacoup raconter des histoires.."),
+("Isabelle", "Stucki", "W", "Cookie", "Nous a offert de cookies et un gâteau lors du premier cours."
+);
 
 INSERT INTO t_teaches (fkteacher, fksection) VALUES 
 (1, 1),
