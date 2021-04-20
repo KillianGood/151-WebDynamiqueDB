@@ -8,12 +8,14 @@ $teachers = $db->getAllTeachers();
     <thead>
         <tr>
             <h3>Liste des enseignants</h3>
-            <?php if(isLogged() && (isAdmin())): ?>
+            <?php if(isLogged() && (isAdmin())): ?> 
                 <div class="add"><a href="addTeacher.php"><img src="../../userContent/add.svg" height="50"></img></a></div>        
             <?php endif; ?>
+            <?php if(!isLogged()):?>
             <th>Nom</th>
             <th>Surnom</th>
             <th>Actions</th>
+            <?php endif; ?>
         </tr>
     <thead>
  
@@ -26,8 +28,10 @@ $teachers = $db->getAllTeachers();
             <?php if(isLogged() && (isAdmin())): ?>
                 <a href="editTeacher.php?idTeacher=<?= $teacher["idTeacher"]; ?>"><img src="../../userContent/edit.svg"></img></a>
                 <a href="deleteTeacher.php?idTeacher=<?= $teacher["idTeacher"]; ?>" onclick="return confirm('Êtes vous sûr de voiloir supprimer l\'enseignant ?')"><img src="../../userContent/trash.svg"></img></a>
-                <?php endif; ?>
+            <?php endif; ?>
+            <?php if(isLogged()): ?>
                 <a href="detail.php?idTeacher=<?= $teacher["idTeacher"]; ?>"><img src="../../userContent/search.svg"></img></a>
+            <?php endif; ?>
             </td>                
         </tr>
         <?php endforeach; ?> 
